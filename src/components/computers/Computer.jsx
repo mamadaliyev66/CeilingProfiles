@@ -14,31 +14,7 @@ export default function Computer() {
     useEffect(() => {
         const Check= async ()=>{
             try {
-              if(localStorage.getItem("login") && localStorage.getItem("password")){
-                const collectionRef = firestore.collection('admin');
-                    const snapshot  = await collectionRef.get();
-                    const fetchedData = snapshot.docs.map(doc =>  ({
-                      docID: doc.id,
-                      ...doc.data()
-                    }));
-                    fetchedData.map((doc, key) =>{
-                      if (doc.login === localStorage.getItem("login") && doc.password ===  localStorage.getItem("password")) {
-                          console.log(window.location.pathname);
-                      }else{
-                        console.log(doc.login,doc.password,"Invalid Credentails ! ! ! ");
-                        // localStorage.setItem('login', doc.email)
-                        // localStorage.setItem('password',  doc.password)
-                        alert('Your Login or Password is Not Valid ! ! ! ')
-                        localStorage.removeItem('login')
-                        localStorage.removeItem('password')
-                        window.location.href = '/login'
-                      }})
-    
-              }else{
-            window.location.href = '/login'
-
-              }
-            
+              
             
               } catch (error) {
               console.log(error);
